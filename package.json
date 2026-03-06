@@ -9,12 +9,12 @@
     "preview": "vite preview",
     "generate:hatches": "node scripts/generate-hatches.mjs"
   },
-  "dependencies": {
-    "geo-cross-section": "file:../geo-cross-section"
-  },
   "devDependencies": {
     "canvas": "^3.2.1",
     "typescript": "~5.9.3",
     "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "geo-cross-section": "^0.1.0"
   }
 }

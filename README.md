@@ -15,25 +15,8 @@ Example application demonstrating the [geo-cross-section](https://github.com/vmu
 
 ## Getting started
 
-This project requires the library source to be present as a sibling directory:
-
-```
-geological-cross-section/
-├── geo-cross-section/          ← library (https://github.com/vmusulainen/geo-cross-section)
-└── geo-cross-section-example/  ← this repo
-```
-
 ```bash
-# 1. Clone both repos side by side
-git clone https://github.com/vmusulainen/geo-cross-section.git
 git clone https://github.com/vmusulainen/geo-cross-section-example.git
-
-# 2. Build the library first
-cd geo-cross-section
-npm install && npm run build
-cd ..
-
-# 3. Install and run the example
 cd geo-cross-section-example
 npm install
 npm run dev
