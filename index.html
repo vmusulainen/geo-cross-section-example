@@ -11,6 +11,8 @@
       header h1 { font-size: 16px; font-weight: 600; color: #e0e0e0 }
       header p  { font-size: 12px; color: #888; margin-top: 2px }
       #container { flex: 1; min-height: 0 }
+      #click-info { flex-shrink: 0; padding: 6px 20px; background: #16213e; border-top: 1px solid #0f3460; font-size: 12px; color: #888; min-height: 28px }
+      #click-info span { color: rgba(255,220,40,0.9) }
     </style>
   </head>
   <body>
@@ -19,6 +21,7 @@
       <p>Scroll to zoom · drag to pan · click to measure · right-click to clear</p>
     </header>
     <div id="container"></div>
+    <div id="click-info">Click on the section to measure</div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

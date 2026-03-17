@@ -1,5 +1,5 @@
 import { CrossSection } from 'geo-cross-section'
-import type { CrossSectionData } from 'geo-cross-section'
+import type { CrossSectionData, ClickPoint } from 'geo-cross-section'
 import baseData from './data.json'
 
 // ── Hatch image URLs ──────────────────────────────────────────────────────────
@@ -36,26 +36,41 @@ const data: CrossSectionData = {
 
 // ── CrossSection ──────────────────────────────────────────────────────────────
 const container = document.getElementById('container') as HTMLElement
+const clickInfo = document.getElementById('click-info') as HTMLElement
+
+function onCrossClick(point: ClickPoint) {
+  console.log('Cross-section clicked at:', point);
+  const geo = (point.lat != null && point.lon != null)
+    ? ` &nbsp;·&nbsp; <span>${point.lat.toFixed(5)}°, ${point.lon.toFixed(5)}°</span>`
+    : ''
+  clickInfo.innerHTML =
+    `Distance: <span>${Math.round(point.distance)} m</span>` +
+    ` &nbsp;·&nbsp; Elevation: <span>${point.elevation.toFixed(1)} m</span>` +
+    ` &nbsp;·&nbsp; Layer: <span>${point.layerId}</span>` +
+    geo
+}
 
 new CrossSection(container, data, {
   padding: { top: 16, right: 16, bottom: 36, left: 60 },
   measurementUnit: 'm',
   hatchPatternSize: 64,
+  initialPan: { x: 10, y: -20 },
+  onClick: onCrossClick,
 
   axes: {
-    axisColor:  'rgba(180,180,180,0.7)',
-    gridColor:  'rgba(120,120,120,0.18)',
-    labelColor: 'rgba(200,200,200,0.9)',
+    axisColor:  '#b4b4b4b3',
+    gridColor:  '#7878782e',
+    labelColor: '#c8c8c8e6',
   },
 
   layer: {
-    borderColor: 'rgba(40,40,40,0.4)',
+    borderColor: '#28282866',
   },
 
   marker: {
-    pointColor:   'rgba(255,220,40,0.9)',
-    lineColor:    'rgba(255,255,255,1)',
+    pointColor:   '#ffdc28e6',
+    lineColor:    '#ffffff',
     lineDash:     [5, 4],
-    depthLabelBg: 'rgba(10,10,10,0.72)',
+    depthLabelBg: '#0a0a0ab8',
   },
 })
